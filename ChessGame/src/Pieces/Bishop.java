@@ -3,6 +3,7 @@ public class Bishop extends Piece{
 
     private String displayString;
     private char color;
+    private char piece = 'B';
 
     public Bishop(char color){
         this.displayString  = color + "B";
@@ -23,6 +24,14 @@ public class Bishop extends Piece{
 
     public void setColor(char color) {
         this.color = color;
+    }
+
+    public char getPiece() {
+        return piece;
+    }
+
+    public void setPiece(char piece) {
+        this.piece = piece;
     }
     
 }

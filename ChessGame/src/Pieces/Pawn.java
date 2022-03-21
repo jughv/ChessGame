@@ -8,6 +8,8 @@ public class Pawn extends Piece{
     
     private String displayString;
     private char color;
+    private char piece = 'p';
+
 
     public Pawn(char color){
         this.displayString  = color + "p";
@@ -29,6 +31,16 @@ public class Pawn extends Piece{
     public void setColor(char color) {
         this.color = color;
     }
+
+    public char getPiece() {
+        return piece;
+    }
+
+    public void setPiece(char piece) {
+        this.piece = piece;
+    }
+
+
 
     public void Shmovement(int origx, int origy, int newx, int newy){
         //ChessBoard.
