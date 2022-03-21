@@ -42,8 +42,12 @@ public class Pawn extends Piece{
 
 
 
-    public void Shmovement(int origx, int origy, int newx, int newy){
+    public boolean Shmovement(int origx, int origy, int newx, int newy){
         //ChessBoard.
+        if(){ //if white piece in new position
+            System.out.println("Illegal move, try again");
+            return false;
+        }
 
         if(origy!=newy){ //if colomn is != must be overtaking a piece
             
@@ -51,6 +55,7 @@ public class Pawn extends Piece{
 
         if(this.ifMoved){
             //if(origx)
+            
         }
     }
 

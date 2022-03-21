@@ -3,10 +3,20 @@ public class Rook extends Piece{
 
     private String displayString;
     private char color;
+    private char piece = 'R';
+
 
     public Rook(char color){
         this.displayString  = color + "R";
         this.color = color;
+    }
+
+    public char getPiece() {
+        return piece;
+    }
+
+    public void setPiece(char piece) {
+        this.piece = piece;
     }
 
     public String getDisplayString() {

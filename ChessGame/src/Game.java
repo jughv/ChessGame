@@ -7,9 +7,14 @@ public class Game {
     private static HashMap<Character,Integer> column = new HashMap<Character,Integer>();
     private static HashMap<Character,Integer> row = new HashMap<Character,Integer>();
     private ChessBoard gameBoard;
+    private boolean wWin = false;
+    private boolean bWin = false;
+    private boolean draw = false;
 
     public Game(){
         gameBoard = new ChessBoard();
+        setColumn();
+        setRow();
     }
    
     
@@ -43,8 +48,18 @@ public class Game {
 
 
     public void play() {
-        setColumn();
-        setRow();
         gameBoard.printChessBoard();
+        while (!wWin && !bWin && !draw){
+
+        }
+        if(wWin){ //white dub
+            System.out.println("White Wins!");
+        }
+        if(bWin){ //black dub
+            System.out.println("Black Wins!");
+        }
+        if(draw){ //draw
+            System.out.println("draw");
+        }
     }
 }

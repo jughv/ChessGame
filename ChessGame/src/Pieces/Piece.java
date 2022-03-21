@@ -6,9 +6,6 @@ public class Piece{
     private String displayString;
     private char color;
 
-    // public Piece(char color){
-
-    // }
 
     public void setifMoved(){
         this.ifMoved = true;
