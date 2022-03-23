@@ -52,12 +52,13 @@ public class King extends Piece{
     {
         int rowDiff = Math.abs(origx-newx);
         int colDiff = Math.abs(origy-newy);
-        if(newx < 0 || newy < 0 || newx > 7 || newy > 7)
+        if(newx < 0 || newy < 0 || newx > 7 || newy > 7){
             return false;
-        if(colDiff > 1 || rowDiff > 1)
+        }
+        if(colDiff > 1 || rowDiff > 1){
             return false;
+        }
         return true;
-
     }
 
     
