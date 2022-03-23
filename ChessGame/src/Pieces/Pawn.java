@@ -1,6 +1,6 @@
 package Pieces;
 
-//import ChessModel.ChessBoard;
+import ChessModel.Chessboard;
 
 public class Pawn extends Piece{
 
@@ -14,6 +14,14 @@ public class Pawn extends Piece{
     public Pawn(char color){
         this.displayString  = color + "p";
         this.color = color;
+    }
+    public Pawn(boolean color){
+        if(!color){
+            this.color = 'b';
+            this.isWhite =false;
+        }
+
+        this.displayString  = this.color + "p";
     }
 
     public String getDisplayString() {
@@ -44,7 +52,8 @@ public class Pawn extends Piece{
 
     public boolean Shmovement(int origx, int origy, int newx, int newy){
         //ChessBoard.
-        if(){ //if white piece in new position
+        Piece oldPiece = Chessboard.getPieceFromBoard(newx,newy);
+        if(Chessboard.getPieceFromBoard(newx,newy).getColor() != Chessboard.getPieceFromBoard(origx,origy).getColor()){ //if white piece in new position
             System.out.println("Illegal move, try again");
             return false;
         }
@@ -57,6 +66,8 @@ public class Pawn extends Piece{
             //if(origx)
             
         }
+        return false;
     }
 
+    
 }

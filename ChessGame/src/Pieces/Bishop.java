@@ -10,6 +10,15 @@ public class Bishop extends Piece{
         this.color = color;
     }
 
+    public Bishop(boolean color){
+        if(!color){
+            this.color = 'b';
+            this.isWhite =false;
+        }
+
+        this.displayString  = this.color + "B";
+    }
+
     public String getDisplayString() {
         return displayString;
     }

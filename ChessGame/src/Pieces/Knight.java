@@ -11,6 +11,15 @@ public class Knight extends Piece{
         this.color = color;
     }
 
+    public Knight(boolean color){
+        if(!color){
+            this.color = 'b';
+            this.isWhite =false;
+        }
+
+        this.displayString  = this.color + "N";
+    }
+
     public char getPiece() {
         return piece;
     }

@@ -11,6 +11,15 @@ public class Rook extends Piece{
         this.color = color;
     }
 
+    public Rook(boolean color){
+        if(!color){
+            this.color = 'b';
+            this.isWhite =false;
+        }
+
+        this.displayString  = this.color + "R";
+    }
+
     public char getPiece() {
         return piece;
     }

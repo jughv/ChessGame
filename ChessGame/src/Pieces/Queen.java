@@ -11,6 +11,15 @@ public class Queen extends Piece{
         this.color = color;
     }
 
+    public Queen(boolean color){
+        if(!color){
+            this.color = 'b';
+            this.isWhite =false;
+        }
+
+        this.displayString  = this.color + "Q";
+    }
+
     public char getPiece() {
         return piece;
     }

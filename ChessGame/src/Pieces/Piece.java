@@ -3,8 +3,11 @@ public class Piece{
     public int x,y;
     //private boolean startingPostion = true;
     public boolean ifMoved = false;
+    public boolean isEmpty = true;
+    public boolean isWhite = true;
     private String displayString;
-    private char color;
+    private char color = 'w';
+    private char piece;
 
 
     public void setifMoved(){
@@ -45,6 +48,24 @@ public class Piece{
 
     public void setColor(char color) {
         this.color = color;
+    }
+
+    public char getPiece() {
+        return piece;
+    }
+
+    public void setPiece(char piece) {
+        this.piece = piece;
+    }
+
+    public void ifEmpty(){
+        if(isEmpty){
+            if(isWhite){
+            this.displayString= "  ";
+            } else {
+                this.displayString = "##";
+            }
+        }
     }
 
     

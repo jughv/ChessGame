@@ -14,6 +14,15 @@ public class King extends Piece{
         this.color = color;
     }
 
+    public King(boolean color){
+        if(!color){
+            this.color = 'b';
+            this.isWhite =false;
+        }
+
+        this.displayString  = this.color + "K";
+    }
+
     public String getDisplayString() {
         return displayString;
     }
