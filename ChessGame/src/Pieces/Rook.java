@@ -43,5 +43,17 @@ public class Rook extends Piece{
     public void setColor(char color) {
         this.color = color;
     }
+
+    public static boolean checkMoveValidity(int origx, int origy, int newx, int newy)
+    {
+        int rowDiff = Math.abs(origx-newx);
+        int colDiff = Math.abs(origy-newy);
+        if(newx < 0 || newy < 0 || newx > 7 || newy > 7)
+            return false;
+        if(colDiff > 1 || rowDiff > 1)
+            return false;
+        return true;
+
+    }
     
 }

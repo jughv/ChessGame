@@ -50,7 +50,7 @@ public class Pawn extends Piece{
 
 
 
-    public boolean Shmovement(int origx, int origy, int newx, int newy){
+    public static boolean checkMoveValidity(int origx, int origy, int newx, int newy){
         //ChessBoard.
         Piece oldPiece = Chessboard.getPieceFromBoard(newx,newy);
         if(Chessboard.getPieceFromBoard(newx,newy).getColor() != Chessboard.getPieceFromBoard(origx,origy).getColor()){ //if white piece in new position
@@ -62,8 +62,8 @@ public class Pawn extends Piece{
             
         }
 
-        if(this.ifMoved){
-            //if(origx)
+        if(oldPiece.getifMoved()){
+            
             
         }
         return false;

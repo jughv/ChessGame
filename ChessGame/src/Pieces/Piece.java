@@ -2,7 +2,7 @@ package Pieces;
 public class Piece{
     public int x,y;
     //private boolean startingPostion = true;
-    public boolean ifMoved = false;
+    private boolean ifMoved = false;
     public boolean isEmpty = true;
     public boolean isWhite = true;
     private String displayString;
