@@ -55,7 +55,7 @@ public class Knight extends Piece{
 
         Piece current = Chessboard.getPieceFromBoard(origx,origy);
 		
-		if(current.getColor() == 'b'){//Checks if color is black
+		if(current.getColor() == 'w'){//Checks if color is white
 			dx = -1 * dx;
 		}
 		

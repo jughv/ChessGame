@@ -85,7 +85,7 @@ public class Game {
             }
 
             
-            if(!parseString(input)){
+            if(!parseString(input,wturn)){
                 System.out.println("Invalid move, try again");
                 continue;
             }
@@ -124,15 +124,20 @@ public class Game {
     }//end play
 
 
-    public boolean parseString(String input){
+    public boolean parseString(String input, boolean wturn){
+        
         char[] temp = input.toCharArray();
         int oldx, oldy, newx, newy;
 
-        if (input == "resign" || input == "Resign"){
-            if(wturn){
-                System.out.println("Black Wins!");
-            } else{
-                System.out.println("White Wins!");
+        if (temp.length == 6){
+            if(temp[0] == 'r' || temp[0] == 'R' && temp[1]=='e' && temp[2]=='s' && temp[3]=='i' && temp[4] == 'g' && temp[5] == 'n'){
+                if(wturn){
+                    System.out.println("Black wins");
+                    System.exit(1);
+                } else{
+                    System.out.println("White wins");
+                    System.exit(1);
+                }
             }
         }
 
@@ -141,30 +146,40 @@ public class Game {
                 System.out.println("draw");
                 System.exit(1);
             }
+            
         }
 
         if(!column.containsKey(temp[0])){ //checks if in column map
             return false;
         } else{
-            oldy = column.get(temp[0]);
+            oldx = column.get(temp[0]);
         }
 
         if(!row.containsKey(temp[1])){ //checks if in row map
             return false;
         } else{
-            oldx = column.get(temp[1]);
+            oldy = row.get(temp[1]);
         }
 
         if(!column.containsKey(temp[3])){ //checks if in column map
             return false;
         } else{
-            newy = column.get(temp[3]);
+            newx = column.get(temp[3]);
         }
 
         if(!row.containsKey(temp[4])){ //checks if in row map
             return false;
         } else{
-            newx = row.get(temp[4]);
+            newy = row.get(temp[4]);
+        }
+
+        if (Chessboard.getPieceFromBoard(oldx, oldy)== null){
+            return false;
+        }
+
+        if(wturn && Chessboard.getPieceFromBoard(oldx, oldy).getColor()== 'b' ||
+        !wturn && Chessboard.getPieceFromBoard(oldx, oldy).getColor()== 'w'){
+            return false;
         }
 
         if (Chessboard.getPieceFromBoard(oldx, oldy).getPiece() == 'p'){//if pawn

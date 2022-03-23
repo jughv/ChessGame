@@ -52,14 +52,14 @@ public class Pawn extends Piece{
 
 
     public static boolean checkMoveValidity(int origx, int origy, int newx, int newy){
-        int dx = newx-origx;
-		int dy = newy-origy;
+        int dx = newy-origy;
+		int dy = newx-origx;
 		
 		boolean isBlack = false;
         Pawn current = (Pawn)Chessboard.getPieceFromBoard(origx,origy);
 
 		
-		if(current.getColor() == 'b'){
+		if(current.getColor() == 'w'){
 			dx= -1 * dx;
 			isBlack = true;
 		}
@@ -70,6 +70,7 @@ public class Pawn extends Piece{
 				if(!isBlack){
 					if(Chessboard.isSpotEmpty(newx - 1, newy)){
 						current.setEnPassent();
+                        current.setifMoved();
 						//moveCount++;
 						return true;
 					}
@@ -77,6 +78,7 @@ public class Pawn extends Piece{
 					
 					if(Chessboard.isSpotEmpty(newx + 1, newy)){
 						current.setEnPassent();
+                        current.setifMoved();
 						//moveCount++;
 						return true;
 					}	
@@ -85,6 +87,7 @@ public class Pawn extends Piece{
 		}
 		else if(dy == 0 && dx == 1){
 			if(Chessboard.isSpotEmpty(newx,newy)){
+                current.setifMoved();
 				//moveCount++;
 				return true;
 			}

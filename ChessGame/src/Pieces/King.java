@@ -1,4 +1,7 @@
 package Pieces;
+
+import ChessModel.Chessboard;
+
 public class King extends Piece{ 
     
     //private boolean ifMoved = false;
@@ -59,9 +62,10 @@ public class King extends Piece{
         if(colDiff > 1 || rowDiff > 1){
             decision= false;
         }
-        if(Chessboard.board[origx][origy] == null){
-                if(Chessboard.board[origx][origy].getColor()!=Chessboard.board[newx][newy].getColor()){
-                    decision= true;}
+        if(Chessboard.getPieceFromBoard(origx, origy) == null){
+                if(Chessboard.getPieceFromBoard(origx, origy).getColor()!=Chessboard.getPieceFromBoard(newx, newy).getColor()){
+                    decision= true;
+                }
         }
         return decision;
 
