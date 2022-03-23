@@ -52,14 +52,21 @@ public class King extends Piece{
     {
         int rowDiff = Math.abs(origx-newx);
         int colDiff = Math.abs(origy-newy);
+        boolean decision=true;
         if(newx < 0 || newy < 0 || newx > 7 || newy > 7){
-            return false;
+            decision= false;
         }
         if(colDiff > 1 || rowDiff > 1){
-            return false;
+            decision= false;
         }
-        return true;
+        if(Chessboard.board[origx][origy] == null){
+                if(Chessboard.board[origx][origy].getColor()!=Chessboard.board[newx][newy].getColor()){
+                    decision= true;}
+        }
+        return decision;
+
     }
+    
 
     
 
