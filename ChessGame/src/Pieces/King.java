@@ -6,7 +6,7 @@ public class King extends Piece{
     //private int x,y;
 
     private String displayString;
-    private char color;
+    private char color = 'w';
     private char piece = 'K';
 
     public King(char color){

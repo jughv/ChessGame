@@ -22,8 +22,9 @@ public class Chessboard{
 		}
 		//for the pawns
         for(int i=0; i<8;i++){
-		board[i][1] = new Pawn(false);}
-        board[0][6] = new Pawn(true);
+		board[i][1] = new Pawn(false);
+        board[i][6] = new Pawn(true);
+		}
 
 		//white pieces
 		board[0][0] = new Rook(false);
@@ -120,4 +121,24 @@ public class Chessboard{
 		
 		return false;
 	}
+
+	public static void promotion(int x, int y,char color, char piece){
+		if (piece == 'Q'){
+			Chessboard.board[x][y] = new Queen(color);
+		}
+		if (piece == 'R'){
+			Chessboard.board[x][y] = new Rook(color);
+		}
+		if (piece == 'B'){
+			Chessboard.board[x][y] = new Bishop(color);
+		}
+		if (piece == 'N'){
+			Chessboard.board[x][y] = new Knight(color);
+		}
+    }
+
+    public static void promotion(int x, int y, char color){
+			Chessboard.board[x][y] = new Queen(color);
+		
+    }
 }

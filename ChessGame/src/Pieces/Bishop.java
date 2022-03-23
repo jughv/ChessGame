@@ -5,7 +5,7 @@ import ChessModel.Chessboard;
 public class Bishop extends Piece{
 
     private String displayString;
-    private char color;
+    private char color = 'w';
     private char piece = 'B';
 
     public Bishop(char color){

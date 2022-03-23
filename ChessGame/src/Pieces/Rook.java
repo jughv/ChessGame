@@ -5,7 +5,7 @@ import ChessModel.Chessboard;
 public class Rook extends Piece{
 
     private String displayString;
-    private char color;
+    private char color = 'w';
     private char piece = 'R';
 
 

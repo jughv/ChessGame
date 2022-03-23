@@ -107,16 +107,16 @@ public class Game {
             }else{
                 wturn = true;
             }
-
+            gameBoard.drawBoard();
 
         }//end while shlooop
 
 
         if(wWin){ //white dub
-            System.out.println("White Wins!");
+            System.out.println("White Wins");
         }
         if(bWin){ //black dub
-            System.out.println("Black Wins!");
+            System.out.println("Black Wins");
         }
         if(draw){ //draw
             System.out.println("draw");

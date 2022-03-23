@@ -7,8 +7,9 @@ public class Pawn extends Piece{
     //private static final int MAX_AMOUNT = 16;
     
     private String displayString;
-    private char color;
+    private char color = 'w';
     private char piece = 'p';
+    boolean enPassent;
 
 
     public Pawn(char color){
@@ -51,23 +52,97 @@ public class Pawn extends Piece{
 
 
     public static boolean checkMoveValidity(int origx, int origy, int newx, int newy){
-        //ChessBoard.
-        Piece oldPiece = Chessboard.getPieceFromBoard(newx,newy);
-        if(Chessboard.getPieceFromBoard(newx,newy).getColor() != Chessboard.getPieceFromBoard(origx,origy).getColor()){ //if white piece in new position
-            System.out.println("Illegal move, try again");
-            return false;
-        }
+        int dx = newx-origx;
+		int dy = newy-origy;
+		
+		boolean isBlack = false;
+        Pawn current = (Pawn)Chessboard.getPieceFromBoard(origx,origy);
 
-        if(origy!=newy){ //if colomn is != must be overtaking a piece
-            
-        }
-
-        if(oldPiece.getifMoved()){
-            
-            
-        }
-        return false;
+		
+		if(current.getColor() == 'b'){
+			dx= -1 * dx;
+			isBlack = true;
+		}
+		
+		
+		if(dy == 0 && dx == 2 && current.getifMoved() == false){
+			if(Chessboard.isSpotEmpty(newx,newy)){
+				if(!isBlack){
+					if(Chessboard.isSpotEmpty(newx - 1, newy)){
+						current.setEnPassent();
+						//moveCount++;
+						return true;
+					}
+				}else{
+					
+					if(Chessboard.isSpotEmpty(newx + 1, newy)){
+						current.setEnPassent();
+						//moveCount++;
+						return true;
+					}	
+				}
+			}
+		}
+		else if(dy == 0 && dx == 1){
+			if(Chessboard.isSpotEmpty(newx,newy)){
+				//moveCount++;
+				return true;
+			}
+		}
+		else if((dy == 1 || dy == -1) && dx == 1 ){
+			if(!(Chessboard.isSpotEmpty(newx,newy))){
+				if(Chessboard.getPieceFromBoard(newx, newy).getColor() != current.getColor()){
+					//moveCount++;
+					return true;
+				}
+			}
+			else{
+				Pawn p;
+				if(current.getColor() == 'b'){
+					if(!(Chessboard.isSpotEmpty(newx + 1, newy))){
+						p = (Pawn)Chessboard.getPieceFromBoard(newx + 1, newy);
+						
+						if(p.getPiece() == 'p'){
+							if(p.isEnPassent()){
+								return true;
+							}
+							else{
+								return false;
+							}
+						}
+					}
+				}
+				else{
+					if(!(Chessboard.isSpotEmpty(newx - 1, newy))){
+						p = (Pawn)Chessboard.getPieceFromBoard(newx - 1, newy);
+						
+						if(p.getPiece() == 'p'){
+							if(((Pawn)p).isEnPassent()){
+								return true;
+							}
+							else{
+								return false;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return false;
     }
+    public boolean isEnPassent() {
+        return enPassent;
+    }
+    public void setEnPassent() {
+        if(this.enPassent == true){
+            this.enPassent = false;
+        } else {
+            this.enPassent = true;
+        }
+    }
+
+    
 
     
 }

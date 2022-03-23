@@ -6,7 +6,7 @@ import GameModel.GameBoard;
 public class Knight extends Piece{
 
     private String displayString;
-    private char color;
+    private char color = 'w';
     private char piece = 'N';
 
 

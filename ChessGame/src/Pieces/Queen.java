@@ -2,7 +2,7 @@ package Pieces;
 public class Queen extends Piece{
     
     private String displayString;
-    private char color;
+    private char color = 'w';
     private char piece = 'Q';
 
 

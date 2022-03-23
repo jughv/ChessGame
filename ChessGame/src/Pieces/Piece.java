@@ -6,7 +6,7 @@ public class Piece{
     public boolean isEmpty = true;
     public boolean isWhite = true;
     private String displayString;
-    private char color = 'w';
+    private char color;
     private char piece;
 
 
