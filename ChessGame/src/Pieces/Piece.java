@@ -68,5 +68,7 @@ public class Piece{
         }
     }
 
-    
+    public boolean checkMoveValidity(int x2, int y2, int kingLocX, int kingLocY, boolean b) {
+        return false;
+    }
 }

@@ -229,4 +229,126 @@ public class Game {
 
         return false;
     }
+    //newstuff from 7:55pm onwards, test push
+        //are there collisions in piece moves?
+        public boolean isPathClear(int oldX, int oldY, int newX, int newY){
+            //char pieceName = Chessboard.board[oldX][oldY].getPiece();
+            
+            int deltaX;
+            int deltaY;
+            
+            deltaX = newX-oldX;
+            deltaY = newY-oldY;
+            
+            int tempx = oldX;
+            int tempy = oldY;
+            int dx = 0;
+            int dy = 0;
+            
+            if (deltaX > 0) {dx = 1;}
+            
+            else if (deltaX < 0) {dx = -1;}
+            
+            if (deltaY > 0) {dy = 1;}
+    
+            else if (deltaY < 0) {dy = -1;}
+                    
+            boolean pathIsClear = true;
+                    
+            if (deltaY == 0) {
+                tempx = tempx + dx;
+                for (int i = 0; i < Math.abs(deltaX)-1; i++) {
+                    if (Chessboard.board[tempx][tempy] != null) {
+                        pathIsClear = false;
+                        break;
+                    }		
+                    tempx = tempx + dx;
+                } 
+                return pathIsClear;
+            }
+    
+            if (deltaX == 0) {
+                tempy = tempy + dy;
+                for (int i = 0; i < Math.abs(deltaY)-1; i++) {
+                    if (Chessboard.board[tempx][tempy] != null) {
+                        pathIsClear = false;
+                        break;
+                    }
+                    tempy = tempy + dy;
+                }
+                return pathIsClear;
+            }	
+            if (deltaX != 0 && deltaY != 0) {
+                tempx = tempx + dx;
+                tempy = tempy + dy;
+                for (int i = 0; i < Math.abs(deltaY)-1; i++) {
+                    if (Chessboard.board[tempx][tempy] != null) {
+                        pathIsClear = false;
+                        break;
+                    }
+                    tempx = tempx + dx;
+                    tempy = tempy + dy;
+                } 
+            }
+            
+            return pathIsClear;
+            
+        }
+        //Checks if King is in Check
+        public boolean detectCheck(boolean whiteturn) {
+            int kingLocX = 0;
+            int kingLocY = 0;
+            
+                
+            if (wturn == true) {//if whiteturn is false, check if the white is in check
+                for (int y = 0; y < 8; y++){
+                    for (int x = 0; x < 8; x++){
+                        if ((Chessboard.board[x][y] != null)&&(Chessboard.board[x][y].getPiece()=='k')) {
+                                kingLocX = x;
+                                kingLocY = y;
+                                break;
+                            }
+                    }
+                }
+                //white king in check
+                for (int y = 0; y < 8; y++){
+                    for (int x = 0; x < 8; x++){ 
+                        if ((Chessboard.board[x][y] != null)&&(Chessboard.board[x][y].getColor() == 'b')) {
+                                if (Chessboard.board[x][y].checkMoveValidity(x, y, kingLocX, kingLocY, true)) {
+                                    if (isPathClear(x, y, kingLocX, kingLocY)) {return true;}
+                                }
+                            
+                        }
+                    }
+                }
+            }
+            
+            
+            if (wturn == false) {//if whiteturn is true, check if the black is in check
+                for (int y = 0; y < 8; y++){
+                    for (int x = 0; x < 8; x++){
+                        if ((Chessboard.board[x][y] != null)&&(Chessboard.board[x][y].getPiece()=='k')) {
+                                kingLocX = x;
+                                kingLocY = y;
+                                break;
+                            
+                        }
+                    }
+                }
+                //black king in chcek
+                for (int y = 0; y < 8; y++){
+                    for (int x = 0; x < 8; x++){
+                        if ((Chessboard.board[x][y] != null)&&(Chessboard.board[x][y].getColor() == 'w')) {
+                                if (Chessboard.board[x][y].checkMoveValidity(x, y, kingLocX, kingLocY, true)) {
+                                    if (isPathClear(x, y, kingLocX, kingLocY)) {return true;}
+                                }
+                            }
+                        
+                    }
+                }
+            }
+            
+        
+            return false;
+        }
 }
