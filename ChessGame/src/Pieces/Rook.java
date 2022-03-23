@@ -1,4 +1,7 @@
 package Pieces;
+
+import ChessModel.Chessboard;
+
 public class Rook extends Piece{
 
     private String displayString;
@@ -46,13 +49,72 @@ public class Rook extends Piece{
 
     public static boolean checkMoveValidity(int origx, int origy, int newx, int newy)
     {
-        int rowDiff = Math.abs(origx-newx);
-        int colDiff = Math.abs(origy-newy);
-        if(newx < 0 || newy < 0 || newx > 7 || newy > 7)
-            return false;
-        if(colDiff > 1 || rowDiff > 1)
-            return false;
-        return true;
+        int dx = newx-origx;
+		int dy = newy-origy;
+		
+        Piece current = Chessboard.getPieceFromBoard(origx,origy);
+
+		if(Math.abs(dy) > 0 && dx == 0){ //horizontal
+
+			
+			
+			if(dy > 0){ //to the right
+				for(int i = origy + 1 ; i < newy; i++){
+					if(!(Chessboard.isSpotEmpty(origx, i))){
+						return false;
+					}
+				}
+			}
+			
+			
+			if(dy < 0){ // to the left
+				for(int i = origy - 1; i > newy; i--){
+					if(!(Chessboard.isSpotEmpty(origx, i))){
+						return false;
+					}
+				}
+			}
+			
+			
+			if(Chessboard.isSpotEmpty(newx, newy)){
+				//moveCount++;
+				return true;
+			}
+			else if(!(Chessboard.getPieceFromBoard(newx, newy).getColor() == current.getColor())){//checks if oppocolor
+				//moveCount++;
+				return true;
+			}
+
+		}
+		else if(Math.abs(dx) > 0 && dy == 0){//vertical
+			
+			if(dx > 0){ //up
+				for(int i = origx + 1; i < newx; i++){
+					if(!(Chessboard.isSpotEmpty(i, origy))){
+						return false;
+					}
+				}
+			}
+			
+			if(dx < 0){ //down
+				for(int i = origx - 1; i > newx; i--){
+					if(!(Chessboard.isSpotEmpty(i, origy))){
+						return false;
+					}
+				}
+			}
+			
+			
+			if(Chessboard.isSpotEmpty(newx, newy)){
+				//moveCount++;
+				return true;
+			}else if(!(Chessboard.getPieceFromBoard(newx, newy).getColor()==current.getColor())){ //checks if oppocolor
+				//moveCount++;
+				return true;
+			}
+		}
+		
+		return false;
 
     }
     

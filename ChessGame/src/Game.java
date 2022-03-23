@@ -168,22 +168,40 @@ public class Game {
         }
 
         if (Chessboard.getPieceFromBoard(oldx, oldy).getPiece() == 'p'){//if pawn
-            return Pawn.checkMoveValidity(oldx, oldy, newx, newy);
+            if(Pawn.checkMoveValidity(oldx, oldy, newx, newy)){
+                Chessboard.movePiece(oldx, oldy, newx, newy);
+                return true;
+            }
         }
         if (Chessboard.getPieceFromBoard(oldx, oldy).getPiece() == 'N'){//knight
-            return Knight.checkMoveValidity(oldx, oldy, newx, newy);
+            if(Knight.checkMoveValidity(oldx, oldy, newx, newy)){
+                Chessboard.movePiece(oldx, oldy, newx, newy);
+                return true;
+            }
         }
         if (Chessboard.getPieceFromBoard(oldx, oldy).getPiece() == 'K'){//king
-            return King.checkMoveValidity(oldx, oldy, newx, newy);
+            if(King.checkMoveValidity(oldx, oldy, newx, newy)){
+                Chessboard.movePiece(oldx, oldy, newx, newy);
+                return true;
+            }
         }
         if (Chessboard.getPieceFromBoard(oldx, oldy).getPiece() == 'B'){//bishop
-            return Bishop.checkMoveValidity(oldx, oldy, newx, newy);
+            if(Bishop.checkMoveValidity(oldx, oldy, newx, newy)){
+                Chessboard.movePiece(oldx, oldy, newx, newy);
+                return true;
+            }
         }
         if (Chessboard.getPieceFromBoard(oldx, oldy).getPiece() == 'Q'){//queen
-            return Queen.checkMoveValidity(oldx, oldy, newx, newy);
+            if(Queen.checkMoveValidity(oldx, oldy, newx, newy)){
+                Chessboard.movePiece(oldx, oldy, newx, newy);
+                return true;
+            }
         }
         if (Chessboard.getPieceFromBoard(oldx, oldy).getPiece() == 'R'){//rook
-            return Rook.checkMoveValidity(oldx, oldy, newx, newy);
+            if( Rook.checkMoveValidity(oldx, oldy, newx, newy)){
+                Chessboard.movePiece(oldx, oldy, newx, newy);
+                return true;
+            }
         }
 
         return false;

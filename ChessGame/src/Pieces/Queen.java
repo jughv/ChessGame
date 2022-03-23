@@ -46,13 +46,13 @@ public class Queen extends Piece{
 
     public static boolean checkMoveValidity(int origx, int origy, int newx, int newy)
     {
-        int rowDiff = Math.abs(origx-newx);
-        int colDiff = Math.abs(origy-newy);
-        if(newx < 0 || newy < 0 || newx > 7 || newy > 7)
-            return false;
-        if(colDiff > 1 || rowDiff > 1)
-            return false;
-        return true;
+        if(Rook.checkMoveValidity(origx, origy, newx, newy)){
+            return true;
+        }
+        if(Bishop.checkMoveValidity(origx, origy, newx, newy)){
+            return true;
+        }
 
+        return false;
     }
 }

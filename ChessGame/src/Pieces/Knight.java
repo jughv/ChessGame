@@ -1,4 +1,8 @@
 package Pieces;
+
+import ChessModel.Chessboard;
+import GameModel.GameBoard;
+
 public class Knight extends Piece{
 
     private String displayString;
@@ -46,13 +50,28 @@ public class Knight extends Piece{
     
     public static boolean checkMoveValidity(int origx, int origy, int newx, int newy)
     {
-        int rowDiff = Math.abs(origx-newx);
-        int colDiff = Math.abs(origy-newy);
-        if(newx < 0 || newy < 0 || newx > 7 || newy > 7)
-            return false;
-        if(colDiff > 1 || rowDiff > 1)
-            return false;
-        return true;
+        int dx = newx-origx;
+		int dy = newy-origy;
 
-    }
+        Piece current = Chessboard.getPieceFromBoard(origx,origy);
+		
+		if(current.getColor() == 'b'){//Checks if color is black
+			dx = -1 * dx;
+		}
+		
+		//checks if it works
+		if((Math.abs(dx)==1 && Math.abs(dy)==2) || (Math.abs(dx)==2 && Math.abs(dy)==1)){
+			
+			if(Chessboard.isSpotEmpty(newx, newy)){ //If the space is empty 
+				return true;
+				
+			}else if(!(Chessboard.isSpotEmpty(newx,newy)) && !(Chessboard.getPieceFromBoard(newx, newy).getColor()==current.getColor())){
+				//moveCount++;
+				return true;
+			}
+		}
+		
+		return false;
+	}
+    
 }

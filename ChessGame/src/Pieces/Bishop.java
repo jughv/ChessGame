@@ -1,4 +1,7 @@
 package Pieces;
+
+import ChessModel.Chessboard;
+
 public class Bishop extends Piece{
 
     private String displayString;
@@ -45,14 +48,65 @@ public class Bishop extends Piece{
 
     public static boolean checkMoveValidity(int origx, int origy, int newx, int newy)
     {
-        int rowDiff = Math.abs(origx-newx);
-        int colDiff = Math.abs(origy-newy);
-        if(newx < 0 || newy < 0 || newx > 7 || newy > 7)
-            return false;
-        if(colDiff > 1 || rowDiff > 1)
-            return false;
-        return true;
+        int dx = newx-origx;
+		int dy = newy-origy;
 
+        Piece current = Chessboard.getPieceFromBoard(origx,origy);
+		
+		if(Math.abs(dy)-Math.abs(dx)==0){ //dif in abs of x and y must be 0 for it to b a diagonal path
+			
+			//Move top right
+			if( dx > 0 && dy > 0){
+				for(int i = origx + 1, j = origy + 1; i < newx || j < newy; i++, j++){
+					if(!Chessboard.isSpotEmpty(i, j)){
+						return false;
+					}
+				}
+			}
+			
+			//Move top left
+			if( dx > 0 && dy < 0){
+				for(int i = origx + 1, j = origy - 1; i < newx || j > newy; i++, j--){
+					if(!Chessboard.isSpotEmpty(i, j)){
+						return false;
+					}
+				}
+			}
+			
+			//Move bottom right
+			if( dx < 0 && dy > 0){
+				for(int i = origx - 1 , j = origy + 1; i > newx || j < newy; i--, j++){
+					if(!Chessboard.isSpotEmpty(i, j)){
+						return false;
+					}
+				}
+			}
+			//Move bottom left
+			if( dx < 0 && dy < 0 ){
+				for(int i = origx - 1, j = origy - 1; i > newx || j > newy; i--, j--){
+					if(!Chessboard.isSpotEmpty(i, j)){
+						return false;
+					}
+				}
+			}
+			
+			/*
+			 * Checks if new spot is free
+			 */
+			if(Chessboard.isSpotEmpty(newx, newy)){
+				//moveCount++;
+				return true;
+			}else if(!(Chessboard.getPieceFromBoard(newx, newy).getColor()==current.getColor())){ //Checks if piece to be captured is the opposite color.
+				//moveCount++;
+				return true;
+			}
+			
+			
+		}
+		
+		
+		
+		return false;
     }
     
 }

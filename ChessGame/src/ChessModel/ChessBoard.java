@@ -94,7 +94,30 @@ public class Chessboard{
     }
 
 	public static void movePiece(int oldx,int oldy, int newx, int newy){
+		getPieceFromBoard(oldx, oldy).setifMoved();
 		Chessboard.board[newx][newy] = getPieceFromBoard(oldx, oldy);
 		Chessboard.board[oldx][oldy] = null;
+	}
+
+	public static void castle(int oldx,int oldy, int newx, int newy){
+		getPieceFromBoard(oldx, oldy).setifMoved();
+		Piece temp = Chessboard.board[newx][newy];
+		Chessboard.board[newx][newy] = getPieceFromBoard(oldx, oldy);
+		Chessboard.board[oldx][oldy] = temp;
+	}
+
+	public static boolean isSpotEmpty(int x, int y){
+		
+		if(x < 0 || x > 7)
+			return true;
+		
+		if(y < 0 || y > 7)
+			return true;
+		
+		if(Chessboard.board[x][y] == null){
+			return true;
+		}
+		
+		return false;
 	}
 }
