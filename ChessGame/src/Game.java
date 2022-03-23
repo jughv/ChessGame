@@ -184,7 +184,15 @@ public class Game {
 
         if (Chessboard.getPieceFromBoard(oldx, oldy).getPiece() == 'p'){//if pawn
             if(Pawn.checkMoveValidity(oldx, oldy, newx, newy)){
+                
                 Chessboard.movePiece(oldx, oldy, newx, newy);
+                if(Chessboard.checkPromotion(newx, newy)){ //promote
+                    if(temp.length == 7){ // type to promote to
+                        Chessboard.promotion(newx, newy,Chessboard.getPieceFromBoard(newx, newy).getColor(), temp[6]);
+                    } else { //null to queen
+                        Chessboard.promotion(newx, newy,Chessboard.getPieceFromBoard(newx, newy).getColor());
+                    }
+                }
                 return true;
             }
         }

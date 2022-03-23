@@ -141,4 +141,17 @@ public class Chessboard{
 			Chessboard.board[x][y] = new Queen(color);
 		
     }
+
+	public static boolean checkPromotion(int x, int y){
+		Piece temp = Chessboard.getPieceFromBoard(x, y);
+		if(temp.getColor() == 'w' && y == 0 && temp.getPiece() == 'p'){
+			return true;
+		}
+
+		if(temp.getColor() == 'b' && y == 7 && temp.getPiece() == 'p'){
+			return true;
+		}
+
+		return false;
+	}
 }
