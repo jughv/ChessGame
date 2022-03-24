@@ -1,4 +1,9 @@
-package ChessModel;
+/**
+ * @author Julio Johnson Lopez
+ * @author Michelle Dong
+ */
+
+ package ChessModel;
 
 //import java.util.HashMap;
 
@@ -93,16 +98,38 @@ public class Chessboard{
 	}
 
 
+	
+	/** 
+	 * @param x location
+	 * @param y location
+	 * @return Piece at designated location
+	 */
 	public static Piece getPieceFromBoard(int x, int y){
         return Chessboard.board[x][y];
     }
 
+	
+	/** 
+	 * @param oldx original x value
+	 * @param oldy original y value
+	 * @param newx new x value
+	 * @param newy new y value
+	 * moves the piece from the first location on the board to the next
+	 */
 	public static void movePiece(int oldx,int oldy, int newx, int newy){
 		getPieceFromBoard(oldx, oldy).setifMoved();
 		Chessboard.board[newx][newy] = getPieceFromBoard(oldx, oldy);
 		Chessboard.board[oldx][oldy] = null;
 	}
 
+	
+	/** 
+	 * @param oldx original x value
+	 * @param oldy original y value
+	 * @param newx new x value
+	 * @param newy new y value
+	 * switches the king and the rook
+	 */
 	public static void castle(int oldx,int oldy, int newx, int newy){
 		getPieceFromBoard(oldx, oldy).setifMoved();
 		Piece temp = Chessboard.board[newx][newy];
@@ -110,6 +137,12 @@ public class Chessboard{
 		Chessboard.board[oldx][oldy] = temp;
 	}
 
+	
+	/** 
+	 * @param x location
+	 * @param y location
+	 * @return boolean whether the location in question is empty
+	 */
 	public static boolean isSpotEmpty(int x, int y){
 		
 		if(x < 0 || x > 7)
@@ -125,6 +158,14 @@ public class Chessboard{
 		return false;
 	}
 
+	
+	/** 
+	 * @param x location
+	 * @param y location
+	 * @param color of piece 
+	 * @param piece character
+	 * promotes pawn to piece of choice
+	 */
 	public static void promotion(int x, int y,char color, char piece){
 		if (piece == 'Q'){
 			Chessboard.board[x][y] = new Queen(color);
@@ -140,11 +181,24 @@ public class Chessboard{
 		}
     }
 
-    public static void promotion(int x, int y, char color){
+    
+	/** 
+	 * @param x location
+	 * @param y location 
+	 * @param color of piece
+	 * promotes pawn to wueen
+	 */
+	public static void promotion(int x, int y, char color){
 			Chessboard.board[x][y] = new Queen(color);
 		
     }
 
+	
+	/** 
+	 * @param x location
+	 * @param y location
+	 * @return boolean whether or not promotion is possible
+	 */
 	public static boolean checkPromotion(int x, int y){
 		Piece temp = Chessboard.getPieceFromBoard(x, y);
 		if(temp.getColor() == 'w' && y == 0 && temp.getPiece() == 'p'){
@@ -158,6 +212,11 @@ public class Chessboard{
 		return false;
 	}
 
+	
+	/** 
+	 * @param x location
+	 * @param y location
+	 */
 	public static void emptySpot(int x, int y){
 		Chessboard.board[x][y] = null;
 	}

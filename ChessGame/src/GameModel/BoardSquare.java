@@ -1,4 +1,9 @@
-package GameModel;
+/**
+ * @author Julio Johnson Lopez
+ * @author Michelle Dong
+ */
+
+ package GameModel;
 //board tiles, has the placeholders on where they are, file and rank
 
 public abstract class  BoardSquare{

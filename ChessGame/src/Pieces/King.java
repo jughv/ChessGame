@@ -1,4 +1,9 @@
-package Pieces;
+/**
+ * @author Julio Johnson Lopez
+ * @author Michelle Dong
+ */
+
+ package Pieces;
 
 import Chess.Game;
 import ChessModel.Chessboard;
@@ -28,31 +33,63 @@ public class King extends Piece{
         this.displayString  = this.color + "K";
     }
 
+    
+    /** 
+     * @return String displayString
+     */
     public String getDisplayString() {
         return displayString;
     }
 
+    
+    /** 
+     * @param displayString gets set
+     */
     public void setDisplayString(String displayString) {
         this.displayString = displayString;
     }
 
+    
+    /** 
+     * @return char color
+     */
     public char getColor() {
         return color;
     }
 
+    
+    /** 
+     * @param color gets set
+     */
     public void setColor(char color) {
         this.color = color;
     }
 
+    
+    /** 
+     * @return char piece character
+     */
     public char getPiece() {
         return piece;
     }
 
+    
+    /** 
+     * @param piece gets set
+     */
     public void setPiece(char piece) {
         this.piece = piece;
     }
 
 
+    
+    /** 
+     * @param origx location
+     * @param origy location
+     * @param newx location
+     * @param newy location
+     * @return boolean if move is valid
+     */
     public static boolean checkMoveValidity(int origx, int origy, int newx, int newy){
         
 		int dx = newy-origy;
@@ -100,10 +137,18 @@ public class King extends Piece{
 		return false;
     }
 
+    
+    /** 
+     * @return boolean if castle is right
+     */
     public boolean isCastletime() {
         return castletime;
     }
 
+    
+    /** 
+     * @param castletime gets set to argument
+     */
     public void setCastletime(boolean castletime) {
         this.castletime = castletime;
     }

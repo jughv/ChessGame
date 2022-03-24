@@ -1,4 +1,9 @@
-package Chess;
+/**
+ * @author Julio Johnson Lopez
+ * @author Michelle Dong
+ */
+
+ package Chess;
 import ChessModel.*;
 import Pieces.*;
 
@@ -23,9 +28,14 @@ public class Game {
     }
    
     
+    
+    /** 
+     * @return HashMap<Character, Integer> returns the Hashmap representing columns
+     */
     public static HashMap<Character, Integer> getColumn() {
         return column;
     }
+
     public static void setColumn() {
         Game.column.put('a', 0);
         Game.column.put('b', 1);
@@ -36,6 +46,10 @@ public class Game {
         Game.column.put('g', 6);
         Game.column.put('h', 7);
     }
+    
+    /** 
+     * @return HashMap<Character, Integer> returns the hashmap representing rows
+     */
     public static HashMap<Character, Integer> getRow() {
         return row;
     }
@@ -50,7 +64,9 @@ public class Game {
         Game.row.put('8', 0);
     }
 
-
+    /** 
+     * Controls the game, prints out when the user needs to insert imputs, runs a check detecter and controls the pace of the game.
+     */
 
     public void play() {
         gameBoard.drawBoard();
@@ -63,7 +79,7 @@ public class Game {
 
             input = null;
 
-            boolean check = false; //check for a check here
+            boolean check = detectCheck(wturn); //check for a check here
             if(check){
                 if(wturn){
                     System.out.println("White king is in check");
@@ -91,7 +107,7 @@ public class Game {
                 continue;
             }
 
-            check = false;//gameboard.detectCheck(!whiteTurn);
+            check = detectCheck(!wturn);
 		    	 if (check == true) {
 		    		 if (!wturn) {
 		    			System.out.println("Checkmate");
@@ -108,6 +124,7 @@ public class Game {
             }else{
                 wturn = true;
             }
+            System.out.println();
             gameBoard.drawBoard();
 
         }//end while shlooop
@@ -125,6 +142,13 @@ public class Game {
     }//end play
 
 
+    
+    /** 
+     * @param input User inputted string
+     * @param wturn whether it is white or black turn
+     * @return boolean returns true or false depending on if the move was made
+     * This method parses the String and returns whether a move was made or if another input must be inputted
+     */
     public boolean parseString(String input, boolean wturn){
 
        
@@ -241,6 +265,14 @@ public class Game {
 
         return false;
     }
+    
+    /** 
+     * @param oldX original x location
+     * @param oldYoriginal y location
+     * @param newX new x location
+     * @param newY new y location
+     * @return boolean returns whether the path is clear or not
+     */
     //newstuff from 7:55pm onwards, test push
         //are there collisions in piece moves?
         public static boolean isPathClear(int oldX, int oldY, int newX, int newY){
@@ -306,6 +338,11 @@ public class Game {
             return pathIsClear;
             
         }
+        
+        /** 
+         * @param whiteturn method asking whos turn it is
+         * @return boolean returns the whether the king in question is in check
+         */
         //Checks if King is in Check
         public boolean detectCheck(boolean whiteturn) {
             int kingLocX = 0;
@@ -315,7 +352,7 @@ public class Game {
             if (wturn == true) {//if whiteturn is false, check if the white is in check
                 for (int y = 0; y < 8; y++){
                     for (int x = 0; x < 8; x++){
-                        if ((Chessboard.getPieceFromBoard(x, y) != null)&&(Chessboard.getPieceFromBoard(x, y).getPiece()=='k')) {
+                        if ((Chessboard.getPieceFromBoard(x, y) != null)&&(Chessboard.getPieceFromBoard(x, y).getPiece()=='k') &&(Chessboard.getPieceFromBoard(x, y).getColor() == 'w')) {
                                 kingLocX = x;
                                 kingLocY = y;
                                 break;
@@ -339,7 +376,7 @@ public class Game {
             if (wturn == false) {//if whiteturn is true, check if the black is in check
                 for (int y = 0; y < 8; y++){
                     for (int x = 0; x < 8; x++){
-                        if ((Chessboard.getPieceFromBoard(x, y) != null)&&(Chessboard.getPieceFromBoard(x, y).getPiece()=='k')) {
+                        if ((Chessboard.getPieceFromBoard(x, y) != null)&&(Chessboard.getPieceFromBoard(x, y).getPiece()=='k' && Chessboard.getPieceFromBoard(x, y).getColor() == 'b')) {
                                 kingLocX = x;
                                 kingLocY = y;
                                 break;

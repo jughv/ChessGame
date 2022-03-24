@@ -1,4 +1,9 @@
-package Pieces;
+/**
+ * @author Julio Johnson Lopez
+ * @author Michelle Dong
+ */
+
+ package Pieces;
 
 import ChessModel.Chessboard;
 
@@ -22,31 +27,63 @@ public class Bishop extends Piece{
         this.displayString  = this.color + "B";
     }
 
-    public String getDisplayString() {
+    
+	/** 
+	 * @return String displayString
+	 */
+	public String getDisplayString() {
         return displayString;
     }
 
-    public void setDisplayString(String displayString) {
+    
+	/** 
+	 * @param displayString gets changed to the correct display string
+	 */
+	public void setDisplayString(String displayString) {
         this.displayString = displayString;
     }
 
-    public char getColor() {
+    
+	/** 
+	 * @return char color
+	 */
+	public char getColor() {
         return color;
     }
 
-    public void setColor(char color) {
+    
+	/** 
+	 * @param color gets set
+	 */
+	public void setColor(char color) {
         this.color = color;
     }
 
-    public char getPiece() {
+    
+	/** 
+	 * @return char piece
+	 */
+	public char getPiece() {
         return piece;
     }
 
-    public void setPiece(char piece) {
+    
+	/** 
+	 * @param piece gets set
+	 */
+	public void setPiece(char piece) {
         this.piece = piece;
     }
 
-    public static boolean checkMoveValidity(int origx, int origy, int newx, int newy)
+    
+	/** 
+	 * @param origx location
+	 * @param origy location
+	 * @param newx location
+	 * @param newy location
+	 * @return boolean whether move is possible
+	 */
+	public static boolean checkMoveValidity(int origx, int origy, int newx, int newy)
     {
         int dx = newx-origx;
 		int dy = newy-origy;

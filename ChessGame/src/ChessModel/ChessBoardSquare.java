@@ -1,4 +1,9 @@
-package ChessModel;
+/**
+ * @author Julio Johnson Lopez
+ * @author Michelle Dong
+ */
+
+ package ChessModel;
 
 //import ChessModel.Pieces.Piece;
 import GameModel.BoardSquare;

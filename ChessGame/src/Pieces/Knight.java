@@ -1,4 +1,9 @@
-package Pieces;
+/**
+ * @author Julio Johnson Lopez
+ * @author Michelle Dong
+ */
+
+ package Pieces;
 
 import ChessModel.Chessboard;
 //import GameModel.GameBoard;
@@ -24,30 +29,62 @@ public class Knight extends Piece{
         this.displayString  = this.color + "N";
     }
 
+    
+    /** 
+     * @return char for piece
+     */
     public char getPiece() {
         return piece;
     }
 
+    
+    /** 
+     * @param piece gets set
+     */
     public void setPiece(char piece) {
         this.piece = piece;
     }
 
+    
+    /** 
+     * @return String retrun displayString
+     */
     public String getDisplayString() {
         return displayString;
     }
 
+    
+    /** 
+     * @param displayString gets set
+     */
     public void setDisplayString(String displayString) {
         this.displayString = displayString;
     }
 
+    
+    /** 
+     * @return char color gets returned
+     */
     public char getColor() {
         return color;
     }
 
+    
+    /** 
+     * @param color gets set
+     */
     public void setColor(char color) {
         this.color = color;
     }
     
+    
+    /** 
+     * @param origx location
+     * @param origy location
+     * @param newx location
+     * @param newy location
+     * @return boolean whether move is valid
+     */
     public static boolean checkMoveValidity(int origx, int origy, int newx, int newy)
     {
         int dx = newx-origx;

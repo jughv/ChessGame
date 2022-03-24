@@ -1,4 +1,9 @@
-package Pieces;
+/**
+ * @author Julio Johnson Lopez
+ * @author Michelle Dong
+ */
+
+ package Pieces;
 
 import ChessModel.Chessboard;
 
@@ -25,33 +30,65 @@ public class Pawn extends Piece{
         this.displayString  = this.color + "p";
     }
 
-    public String getDisplayString() {
+    
+	/** 
+	 * @return String gets returned
+	 */
+	public String getDisplayString() {
         return displayString;
     }
 
-    public void setDisplayString(String displayString) {
+    
+	/** 
+	 * @param displayString gets set
+	 */
+	public void setDisplayString(String displayString) {
         this.displayString = displayString;
     }
 
-    public char getColor() {
+    
+	/** 
+	 * @return char color 
+	 */
+	public char getColor() {
         return color;
     }
 
-    public void setColor(char color) {
+    
+	/** 
+	 * @param color gets set
+	 */
+	public void setColor(char color) {
         this.color = color;
     }
 
-    public char getPiece() {
+    
+	/** 
+	 * @return char piece
+	 */
+	public char getPiece() {
         return piece;
     }
 
-    public void setPiece(char piece) {
+    
+	/** 
+	 * @param piece gets set
+	 */
+	public void setPiece(char piece) {
         this.piece = piece;
     }
 
 
 
-    public static boolean checkMoveValidity(int origx, int origy, int newx, int newy){
+    
+	/** 
+	 * @param origx location
+	 * @param origy location
+	 * @param newx location
+	 * @param newy location
+	 * @return boolean whether move is valid
+	 */
+	public static boolean checkMoveValidity(int origx, int origy, int newx, int newy){
         int dx = newy-origy;
 		int dy = newx-origx;
 		
@@ -136,7 +173,11 @@ public class Pawn extends Piece{
 		
 		return false;
     }
-    public boolean isEnPassant() {
+    
+	/** 
+	 * @return boolean if enPassant is actives
+	 */
+	public boolean isEnPassant() {
         return EnPassant;
     }
     public void setEnPassant() {
