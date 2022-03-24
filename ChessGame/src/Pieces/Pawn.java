@@ -9,7 +9,7 @@ public class Pawn extends Piece{
     private String displayString;
     private char color = 'w';
     private char piece = 'p';
-    boolean enPassent;
+    boolean EnPassant;
 
 
     public Pawn(char color){
@@ -69,7 +69,7 @@ public class Pawn extends Piece{
 			if(Chessboard.isSpotEmpty(newx,newy)){
 				if(!isBlack){
 					if(Chessboard.isSpotEmpty(newx - 1, newy)){
-						current.setEnPassent();
+						current.setEnPassant();
                         current.setifMoved();
 						//moveCount++;
 						return true;
@@ -77,7 +77,7 @@ public class Pawn extends Piece{
 				}else{
 					
 					if(Chessboard.isSpotEmpty(newx + 1, newy)){
-						current.setEnPassent();
+						current.setEnPassant();
                         current.setifMoved();
 						//moveCount++;
 						return true;
@@ -106,7 +106,8 @@ public class Pawn extends Piece{
 						p = (Pawn)Chessboard.getPieceFromBoard(newx + 1, newy);
 						
 						if(p.getPiece() == 'p'){
-							if(p.isEnPassent()){
+							if(p.isEnPassant()){
+                                Chessboard.emptySpot(newx+1, newy);
 								return true;
 							}
 							else{
@@ -120,7 +121,8 @@ public class Pawn extends Piece{
 						p = (Pawn)Chessboard.getPieceFromBoard(newx - 1, newy);
 						
 						if(p.getPiece() == 'p'){
-							if(((Pawn)p).isEnPassent()){
+							if(((Pawn)p).isEnPassant()){
+                                Chessboard.emptySpot(newx-1, newy);
 								return true;
 							}
 							else{
@@ -134,14 +136,14 @@ public class Pawn extends Piece{
 		
 		return false;
     }
-    public boolean isEnPassent() {
-        return enPassent;
+    public boolean isEnPassant() {
+        return EnPassant;
     }
-    public void setEnPassent() {
-        if(this.enPassent == true){
-            this.enPassent = false;
+    public void setEnPassant() {
+        if(this.EnPassant == true){
+            this.EnPassant = false;
         } else {
-            this.enPassent = true;
+            this.EnPassant = true;
         }
     }
 

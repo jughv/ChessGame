@@ -154,4 +154,8 @@ public class Chessboard{
 
 		return false;
 	}
+
+	public static void emptySpot(int x, int y){
+		Chessboard.board[x][y] = null;
+	}
 }
