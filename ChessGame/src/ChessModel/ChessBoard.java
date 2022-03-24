@@ -55,10 +55,12 @@ public class Chessboard{
 		for (int i = 0; i < 8; i++){
 			for (int j = 0; j < 8; j++){
 				if (white){
-					result[i][j] = "  |";
+					//result[i][j] = "  |";
+					result[i][j] = "   ";
 					white = false;
 				}else{
-					result[i][j] = "##|";
+					//result[i][j] = "##|";
+					result[i][j] = "## ";
 					white = true;
 				}
 			}
@@ -70,22 +72,23 @@ public class Chessboard{
 			for (int x = 0; x < 8; x++){
 				
 				if (Chessboard.board[x][y] != null){
-					result[x][y] = Chessboard.board[x][y].getDisplayString() + "|";
+					//result[x][y] = Chessboard.board[x][y].getDisplayString() + "|";
+					result[x][y] = Chessboard.board[x][y].getDisplayString();
 				}
 			}
 		}
 		
 		//print out the whole board  
-		System.out.println("_________________________");
+		//System.out.println("_________________________");
 		for (int y = 0; y < 8; y++){
-			System.out.print("|");
+			//System.out.print("|");
 			for (int x = 0; x < 8; x++){
 				System.out.print(result[x][y]);
 			}
 			 System.out.print("  " + (8-y));
 			 System.out.println();
 		}
-		System.out.println("\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'"); 
+		//System.out.println("\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'"); 
 		System.out.println(" a  b  c  d  e  f  g  h"); 
 	}
 
