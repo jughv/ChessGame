@@ -1,7 +1,7 @@
 package Pieces;
 
 import ChessModel.Chessboard;
-import GameModel.GameBoard;
+//import GameModel.GameBoard;
 
 public class Knight extends Piece{
 
@@ -66,7 +66,6 @@ public class Knight extends Piece{
 				return true;
 				
 			}else if(!(Chessboard.isSpotEmpty(newx,newy)) && !(Chessboard.getPieceFromBoard(newx, newy).getColor()==current.getColor())){
-				//moveCount++;
 				return true;
 			}
 		}

@@ -94,10 +94,8 @@ public class Bishop extends Piece{
 			 * Checks if new spot is free
 			 */
 			if(Chessboard.isSpotEmpty(newx, newy)){
-				//moveCount++;
 				return true;
 			}else if(!(Chessboard.getPieceFromBoard(newx, newy).getColor()==current.getColor())){ //Checks if piece to be captured is the opposite color.
-				//moveCount++;
 				return true;
 			}
 			

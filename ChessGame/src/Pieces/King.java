@@ -53,39 +53,22 @@ public class King extends Piece{
     }
 
 
-    public static boolean checkMoveValidity(int origx, int origy, int newx, int newy)
-    {
+    public static boolean checkMoveValidity(int origx, int origy, int newx, int newy){
         
-		
 		int dx = newy-origy;
 		int dy = newx-origx; 
         Piece current = Chessboard.getPieceFromBoard(origx,origy);
-
 		
-		
-		/*
-		 * Makes sure King only moves 1 space in any direction
-		 */
+		// Makes sure King only moves 1 space in any direction
 		if(Math.abs(dx) <= 1 && Math.abs(dy) <= 1){
-			/*
-			if(scanCheck(newX,newY)){
-				return 3;
-			}
-			*/
 			
-			/* Checks is space is empty or not */
+			
+			// Checks is space is empty or not
 			if(Chessboard.isSpotEmpty(newx, newy)){
-				/*
-				if(scanCheck(newX,newY)){
-					return 3;
-				}
-				*/
-				//moveCount++;
+
 				return true;
 			}else if(!(Chessboard.getPieceFromBoard(newx, newy).getColor()==current.getColor())){
-				/* If not make sure piece is opposite color */
-				
-				//moveCount++;
+				//piece is opposite color 
 				return true;
 			}
 			
@@ -97,7 +80,7 @@ public class King extends Piece{
 			Piece p;
 			
 			if(dy > 0){
-				if(Game.isPathClear(origx, origy, newx,newy)){
+				if(Game.isPathClear(origx, origy, newx,newy)){ //if path is clear lets go
 					p = Chessboard.getPieceFromBoard(newx, newy);
 					
 					if(p == null)

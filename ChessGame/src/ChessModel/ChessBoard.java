@@ -1,8 +1,8 @@
 package ChessModel;
 
-import java.util.HashMap;
+//import java.util.HashMap;
 
-import GameModel.*;
+//import GameModel.*;
 import Pieces.*;
 public class Chessboard{
 	
@@ -73,7 +73,7 @@ public class Chessboard{
 				
 				if (Chessboard.board[x][y] != null){
 					//result[x][y] = Chessboard.board[x][y].getDisplayString() + "|";
-					result[x][y] = Chessboard.board[x][y].getDisplayString();
+					result[x][y] = Chessboard.board[x][y].getDisplayString() + " ";
 				}
 			}
 		}
@@ -85,7 +85,7 @@ public class Chessboard{
 			for (int x = 0; x < 8; x++){
 				System.out.print(result[x][y]);
 			}
-			 System.out.print("  " + (8-y));
+			 System.out.print("" + (8-y));
 			 System.out.println();
 		}
 		//System.out.println("\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'"); 

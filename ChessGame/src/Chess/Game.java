@@ -212,6 +212,7 @@ public class Game {
         if (Chessboard.getPieceFromBoard(oldx, oldy).getPiece() == 'K'){//king
             if(King.checkMoveValidity(oldx, oldy, newx, newy)){
                 if(Chessboard.getPieceFromBoard(oldx, oldy).isCastletime()){
+                    Chessboard.getPieceFromBoard(oldx, oldy).setCastletime(false); // revert back from castle time
                     Chessboard.castle(oldx, oldy, newx, newy);
                     return true;
                 }
