@@ -88,7 +88,7 @@ public class Chessboard{
 			 System.out.print("  " + (8-y));
 			 System.out.println();
 		}
-		System.out.println("\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'"); 
+		//System.out.println("\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'\'"); 
 		System.out.println(" a  b  c  d  e  f  g  h"); 
 	}
 
