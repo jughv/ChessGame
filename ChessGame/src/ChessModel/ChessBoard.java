@@ -72,7 +72,8 @@ public class Chessboard{
 			for (int x = 0; x < 8; x++){
 				
 				if (Chessboard.board[x][y] != null){
-					result[x][y] = Chessboard.board[x][y].getDisplayString() + "|";
+					//result[x][y] = Chessboard.board[x][y].getDisplayString() + "|";
+					result[x][y] = Chessboard.board[x][y].getDisplayString();
 				}
 			}
 		}
