@@ -258,7 +258,7 @@ public class Game {
             if (deltaY == 0) {
                 tempx = tempx + dx;
                 for (int i = 0; i < Math.abs(deltaX)-1; i++) {
-                    if (Chessboard.getPieceFromBoard(tempx, tempy) != null) {
+                    if (Chessboard.board[tempx][tempy] != null) {
                         pathIsClear = false;
                         break;
                     }		
@@ -270,7 +270,7 @@ public class Game {
             if (deltaX == 0) {
                 tempy = tempy + dy;
                 for (int i = 0; i < Math.abs(deltaY)-1; i++) {
-                    if (Chessboard.getPieceFromBoard(tempx, tempy) != null) {
+                    if (Chessboard.board[tempx][tempy] != null) {
                         pathIsClear = false;
                         break;
                     }
@@ -282,7 +282,7 @@ public class Game {
                 tempx = tempx + dx;
                 tempy = tempy + dy;
                 for (int i = 0; i < Math.abs(deltaY)-1; i++) {
-                    if (Chessboard.getPieceFromBoard(tempx, tempy) != null) {
+                    if (Chessboard.board[tempx][tempy] != null) {
                         pathIsClear = false;
                         break;
                     }
@@ -303,7 +303,7 @@ public class Game {
             if (wturn == true) {//if whiteturn is false, check if the white is in check
                 for (int y = 0; y < 8; y++){
                     for (int x = 0; x < 8; x++){
-                        if ((Chessboard.getPieceFromBoard(x, y) != null)&&(Chessboard.getPieceFromBoard(x, y).getPiece()=='k')) {
+                        if ((Chessboard.getpiecefromboard[x][y] != null)&&(Chessboard.board[x][y].getPiece()=='k')) {
                                 kingLocX = x;
                                 kingLocY = y;
                                 break;
@@ -313,8 +313,8 @@ public class Game {
                 //white king in check
                 for (int y = 0; y < 8; y++){
                     for (int x = 0; x < 8; x++){ 
-                        if ((Chessboard.getPieceFromBoard(x, y) != null)&&(Chessboard.getPieceFromBoard(x, y).getColor() == 'b')) {
-                                if (Chessboard.getPieceFromBoard(x, y).checkMoveValidity(x, y, kingLocX, kingLocY, true)) {
+                        if ((Chessboard.board[x][y] != null)&&(Chessboard.board[x][y].getColor() == 'b')) {
+                                if (Chessboard.board[x][y].checkMoveValidity(x, y, kingLocX, kingLocY, true)) {
                                     if (isPathClear(x, y, kingLocX, kingLocY)) {return true;}
                                 }
                             
@@ -327,7 +327,7 @@ public class Game {
             if (wturn == false) {//if whiteturn is true, check if the black is in check
                 for (int y = 0; y < 8; y++){
                     for (int x = 0; x < 8; x++){
-                        if ((Chessboard.getPieceFromBoard(x, y) != null)&&(Chessboard.getPieceFromBoard(x, y).getPiece()=='k')) {
+                        if ((Chessboard.board[x][y] != null)&&(Chessboard.board[x][y].getPiece()=='k')) {
                                 kingLocX = x;
                                 kingLocY = y;
                                 break;
@@ -338,8 +338,8 @@ public class Game {
                 //black king in chcek
                 for (int y = 0; y < 8; y++){
                     for (int x = 0; x < 8; x++){
-                        if ((Chessboard.getPieceFromBoard(x, y) != null)&&(Chessboard.getPieceFromBoard(x, y).getColor() == 'w')) {
-                                if (Chessboard.getPieceFromBoard(x, y).checkMoveValidity(x, y, kingLocX, kingLocY, true)) {
+                        if ((Chessboard.board[x][y] != null)&&(Chessboard.board[x][y].getColor() == 'w')) {
+                                if (Chessboard.board[x][y].checkMoveValidity(x, y, kingLocX, kingLocY, true)) {
                                     if (isPathClear(x, y, kingLocX, kingLocY)) {return true;}
                                 }
                             }
