@@ -1,3 +1,4 @@
+package Chess;
 import ChessModel.*;
 import Pieces.*;
 
@@ -125,9 +126,15 @@ public class Game {
 
 
     public boolean parseString(String input, boolean wturn){
+
+       
         
         char[] temp = input.toCharArray();
         int oldx, oldy, newx, newy;
+        
+        if (temp.length < 5){
+            return false;
+        }
 
         if (temp.length == 6){
             if(temp[0] == 'r' || temp[0] == 'R' && temp[1]=='e' && temp[2]=='s' && temp[3]=='i' && temp[4] == 'g' && temp[5] == 'n'){
@@ -204,6 +211,10 @@ public class Game {
         }
         if (Chessboard.getPieceFromBoard(oldx, oldy).getPiece() == 'K'){//king
             if(King.checkMoveValidity(oldx, oldy, newx, newy)){
+                if(Chessboard.getPieceFromBoard(oldx, oldy).isCastletime()){
+                    Chessboard.castle(oldx, oldy, newx, newy);
+                    return true;
+                }
                 Chessboard.movePiece(oldx, oldy, newx, newy);
                 return true;
             }
@@ -231,7 +242,7 @@ public class Game {
     }
     //newstuff from 7:55pm onwards, test push
         //are there collisions in piece moves?
-        public boolean isPathClear(int oldX, int oldY, int newX, int newY){
+        public static boolean isPathClear(int oldX, int oldY, int newX, int newY){
             //char pieceName = Chessboard.board[oldX][oldY].getPiece();
             
             int deltaX;

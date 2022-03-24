@@ -1,5 +1,6 @@
 package Pieces;
 
+import Chess.Game;
 import ChessModel.Chessboard;
 
 public class King extends Piece{ 
@@ -11,6 +12,7 @@ public class King extends Piece{
     private String displayString;
     private char color = 'w';
     private char piece = 'K';
+    private boolean castletime = false;
 
     public King(char color){
         this.displayString  = color + "K";
@@ -53,22 +55,74 @@ public class King extends Piece{
 
     public static boolean checkMoveValidity(int origx, int origy, int newx, int newy)
     {
-        int rowDiff = Math.abs(origx-newx);
-        int colDiff = Math.abs(origy-newy);
-        boolean decision=true;
-        if(newx < 0 || newy < 0 || newx > 7 || newy > 7){
-            decision= false;
-        }
-        if(colDiff > 1 || rowDiff > 1){
-            decision= false;
-        }
-        if(Chessboard.getPieceFromBoard(origx, origy) == null){
-                if(Chessboard.getPieceFromBoard(origx, origy).getColor()!=Chessboard.getPieceFromBoard(newx, newy).getColor()){
-                    decision= true;
-                }
-        }
-        return decision;
+        
+		
+		int dx = newy-origy;
+		int dy = newx-origx; 
+        Piece current = Chessboard.getPieceFromBoard(origx,origy);
 
+		
+		
+		/*
+		 * Makes sure King only moves 1 space in any direction
+		 */
+		if(Math.abs(dx) <= 1 && Math.abs(dy) <= 1){
+			/*
+			if(scanCheck(newX,newY)){
+				return 3;
+			}
+			*/
+			
+			/* Checks is space is empty or not */
+			if(Chessboard.isSpotEmpty(newx, newy)){
+				/*
+				if(scanCheck(newX,newY)){
+					return 3;
+				}
+				*/
+				//moveCount++;
+				return true;
+			}else if(!(Chessboard.getPieceFromBoard(newx, newy).getColor()==current.getColor())){
+				/* If not make sure piece is opposite color */
+				
+				//moveCount++;
+				return true;
+			}
+			
+			
+			
+		}
+		else if(Math.abs(dx) == 0 && Math.abs(dy) >= 2 && current.getifMoved() == false){
+			
+			Piece p;
+			
+			if(dy > 0){
+				if(Game.isPathClear(origx, origy, newx,newy)){
+					p = Chessboard.getPieceFromBoard(newx, newy);
+					
+					if(p == null)
+						return false;
+					
+					if(p.getPiece() =='R' && p.getColor() == current.getColor()){
+						if(p.getifMoved() == false){
+                            current.setCastletime(true);
+							return true;
+						}
+					}
+				}
+				
+			}
+		}
+	
+		return false;
+    }
+
+    public boolean isCastletime() {
+        return castletime;
+    }
+
+    public void setCastletime(boolean castletime) {
+        this.castletime = castletime;
     }
     
 

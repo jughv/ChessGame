@@ -78,10 +78,12 @@ public class Rook extends Piece{
 			
 			if(Chessboard.isSpotEmpty(newx, newy)){
 				//moveCount++;
+                current.setifMoved();
 				return true;
 			}
 			else if(!(Chessboard.getPieceFromBoard(newx, newy).getColor() == current.getColor())){//checks if oppocolor
 				//moveCount++;
+                current.setifMoved();
 				return true;
 			}
 
@@ -110,6 +112,7 @@ public class Rook extends Piece{
 				return true;
 			}else if(!(Chessboard.getPieceFromBoard(newx, newy).getColor()==current.getColor())){ //checks if oppocolor
 				//moveCount++;
+                current.setifMoved();
 				return true;
 			}
 		}

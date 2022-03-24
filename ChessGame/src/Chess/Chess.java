@@ -1,3 +1,4 @@
+package Chess;
 //import ChessModel.*;
 public class Chess {
     //private static ChessBoard gameBoard = new ChessBoard();

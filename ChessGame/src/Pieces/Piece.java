@@ -8,6 +8,7 @@ public class Piece{
     private String displayString;
     private char color;
     private char piece;
+    private boolean castletime;
 
 
     public void setifMoved(){
@@ -70,5 +71,13 @@ public class Piece{
 
     public boolean checkMoveValidity(int x2, int y2, int kingLocX, int kingLocY, boolean b) {
         return false;
+    }
+
+    public void setCastletime(boolean b) {
+        this.castletime = b;
+    }
+
+    public boolean isCastletime() {
+        return castletime;
     }
 }
